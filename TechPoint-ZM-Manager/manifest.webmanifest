@@ -1,0 +1,25 @@
+{
+  "name": "TechPoint ZM | Phones & Accessories",
+  "short_name": "TechPoint ZM",
+  "description": "Mobile phones and accessories inventory, IMEI tracking, sales and receipts for TechPoint ZM.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

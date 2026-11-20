@@ -1,0 +1,5 @@
+name,sku,category,type,cost,price,qty,reorder,imei
+iPhone Fast Charger 20W,CHG-20W,Chargers,accessory,120,220,15,5,
+Nike Air Max (Size 42),SH-AM42,Sneakers,shoes,600,950,4,2,
+Plain Black T-Shirt (L),TS-BLK-L,T-Shirts,clothing,80,160,20,5,
+iPhone 13 128GB,IP13-128,Phones,phone,7500,9500,0,1,yes

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>try{var t=localStorage.getItem("tpz:theme");if(t&&t!=="light")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TechPoint ZM">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="description" content="TechPoint ZM - Phones & Accessories. Mobile inventory, phone IMEI tracking, sales and customer receipts. Powered by RSM TechCare.">
+  <title>TechPoint ZM | Phones & Accessories</title>
+  <script>try{if(localStorage.getItem('tpz:theme')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/app-icon-192.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="v05.css">
+</head>
+<body>
+  <div id="connectionBanner" class="connection-banner hidden"></div>
+
+  <section id="splash" class="splash" style="background-image:linear-gradient(#ffffffb8,#ffffffe6),url('assets/brand-marble.jpg')">
+    <div class="splash-inner">
+      <img src="assets/techpoint-mark-black.png" class="splash-mark" alt="TPM">
+      <h1>TechPoint <span>ZM</span></h1>
+      <p class="splash-cat">CLOTHES, SHOES, PHONES &amp; ACCESSORIES</p>
+      <p class="splash-tag">YOUR TECH, YOUR POINT.</p>
+      <div class="splash-feats"><span>📱 Phone &amp; IMEI tracking</span><span>🧾 Instant receipts</span><span>📦 Live stock</span><span>📊 Profit reports</span></div>
+      <button id="splashGo" class="splash-btn">Get started →</button>
+      <small>Install on iPhone: tap Share ⬆ then “Add to Home Screen”</small>
+    </div>
+  </section>
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-hero">
+      <div class="auth-brand-lockup">
+        <img class="brand-logo" src="assets/techpoint-mark-white.png" alt="TechPoint ZM logo">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <div class="auth-brand-copy"><h1>TechPoint <span>ZM</span></h1><p class="brand-tagline">CLOTHES · SHOES · PHONES &amp; ACCESSORIES</p></div>
+      </div>
+      <p class="eyebrow light">SMART BUSINESS CONTROL</p>
+      <p class="auth-intro">Your shop. Your stock. Every sale accounted for.</p>
+      <div class="auth-points"><span>✓ Add products whenever you need</span><span>✓ Phone & IMEI tracking</span><span>✓ Instant receipts</span><span>✓ Stock & sales insights</span></div>
+    </div>
+    <div class="auth-card">
+      
+      <form id="authForm" class="stack-form">
+        <div class="field"><label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" placeholder="owner@example.com" required></div>
+        <div class="field"><label for="authPassword">Password</label><input id="authPassword" type="password" minlength="8" autocomplete="current-password" placeholder="At least 8 characters" required></div>
+        <button id="authSubmit" class="btn btn-primary btn-block" type="submit">Sign in to your shop</button>
+        <p id="authMessage" class="form-message" role="status"></p>
+      </form>
+      <p class="auth-small">Your business records are private to your account. Do not share your password.</p>
+      
+    </div>
+    <div class="auth-credit">Powered by <strong>RSM TechCare</strong> · Technology you can trust.</div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="side-brand" href="#dashboard"><img class="side-brand-logo" src="assets/techpoint-mark-white.png" alt=""><span><strong>TECHPOINT ZM</strong><small>CLOTHES · SHOES · PHONES &amp; ACCESSORIES</small></span></a>
+      <div class="side-business"><span class="avatar" id="businessAvatar">T</span><span><strong id="sideBusinessName">TechPoint ZM</strong><small>Owner workspace</small></span></div>
+      <nav class="side-nav">
+        <p class="nav-caption">WORKSPACE</p>
+        <button class="nav-item active" data-view="dashboard"><span>◫</span>Overview</button>
+        <button class="nav-item" data-view="inventory"><span>▤</span>Inventory</button>
+        <button class="nav-item" data-view="checkout"><span>＋</span>New sale</button>
+        <button class="nav-item" data-view="transactions"><span>▧</span>Transactions & receipts</button>
+        <button class="nav-item" data-view="expenses"><span>↗</span>Expenses</button>
+        <button class="nav-item" data-view="reports"><span>▥</span>Reports</button>
+        <button class="nav-item owner-only" data-view="team"><span>👥</span>Team &amp; access</button>
+        <p class="nav-caption nav-caption-lower">MANAGE</p>
+        <button class="nav-item" data-view="settings"><span>⚙</span>Business settings</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="secure-note"><span>●</span><div><strong>Private workspace</strong><small>Secured with account access</small></div></div><button id="signOutButton" class="signout-btn">↪ Sign out</button><p class="side-credit">Built by RSM TechCare</p></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div><span class="top-eyebrow">TECHPOINT ZM / <span id="pageCrumb">OVERVIEW</span></span><h1 id="pageTitle">Good day</h1></div>
+        <div class="topbar-actions"><button id="themeToggle" class="icon-btn" title="Change theme" aria-label="Change theme">◐</button><span class="live-pill"><i></i><span id="syncStatus">Cloud connected</span></span><button id="installButton" class="btn btn-secondary hidden">⬇ Install app</button><button class="user-circle" id="userMenu" title="Account">T</button></div>
+      </header>
+
+      <section id="view-dashboard" class="view active">
+        <div class="welcome-row"><div><p class="muted">Here is how your shop is doing today.</p></div><button class="btn btn-primary" data-go="checkout">＋ Record a sale</button></div>
+        <div class="metric-grid">
+          <article class="metric-card metric-dark"><div class="metric-top"><span>Today's sales</span><span class="metric-icon">↗</span></div><strong id="todaySales">K0.00</strong><small id="todayCount">0 transactions</small></article>
+          <article class="metric-card"><div class="metric-top"><span>Products in catalogue</span><span class="metric-icon blue">▤</span></div><strong id="productCount">0</strong><small>Active product lines</small></article>
+          <article class="metric-card"><div class="metric-top"><span>Units available</span><span class="metric-icon purple">◈</span></div><strong id="stockCount">0</strong><small>Including registered devices</small></article>
+          <article class="metric-card"><div class="metric-top"><span>Customer balances</span><span class="metric-icon orange">◷</span></div><strong id="balanceCount">K0.00</strong><small>Outstanding across sales</small></article>
+        </div>
+        <article class="panel chart-panel"><div class="panel-head"><div><p class="eyebrow">LAST 7 DAYS</p><h2>Sales trend</h2></div><strong id="weekTotal" class="panel-total">K0.00</strong></div><div id="weekChart" class="week-chart"></div></article>
+        <div class="dash-grid">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">STOCK WATCH</p><h2>Restock reminders</h2></div><button class="link-btn" data-go="inventory">Open inventory →</button></div><div id="lowStockList" class="list-stack"><div class="empty-inline">No stock alerts.</div></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent transactions</h2></div><button class="link-btn" data-go="transactions">View all →</button></div><div id="recentSalesList" class="list-stack"><div class="empty-inline">No sales recorded yet.</div></div></article>
+        </div>
+        <article class="quick-panel"><div><span class="quick-icon">✦</span><div><p class="eyebrow">QUICK ACTION</p><h2>Make a sale and give your customer a receipt.</h2><p>Record the items, payment and customer details in one flow.</p></div></div><button class="btn btn-light" data-go="checkout">Start a sale <span>→</span></button></article>
+      </section>
+
+      <section id="view-inventory" class="view">
+        <div class="section-intro"><div><p class="muted">Add and manage every phone and accessory you sell. Your product catalogue is fully owner-managed — add new products whenever stock changes.</p></div><div class="button-row"><button id="addDeviceButton" class="btn btn-secondary">＋ Register phone</button><button id="addProductButton" class="btn btn-primary">＋ Add product</button></div></div>
+        <div class="panel inventory-panel"><div class="filterbar"><input type="file" id="csvFile" accept=".csv" hidden><button id="importCsvButton" class="btn btn-secondary manager-up">⬆ Import CSV</button><button id="bulkButton" class="btn btn-secondary manager-up">📋 Paste from Excel</button><input id="inventorySearch" class="search-input" type="search" placeholder="Search product, SKU or IMEI"><select id="inventoryFilter" class="select-input"><option value="all">All products</option><option value="low">Low stock</option><option value="archived">Archived</option><option value="phones">Phones</option><option value="clothing">Clothing</option><option value="shoes">Shoes</option><option value="accessories">Accessories</option></select></div><div id="inventoryCards" class="inventory-grid"><div class="empty-inline">No products added yet. Add your first item.</div></div></div>
+        <article class="panel lookup-panel"><div class="panel-head"><div><p class="eyebrow">PHONE TRACE</p><h2>IMEI lookup</h2></div><span class="badge imei">Instant history</span></div><input id="imeiLookup" class="search-input lookup-input" type="search" placeholder="Type an IMEI or serial number" autocomplete="off"><div id="imeiLookupResult" class="lookup-result"><p class="helper-text">Search any IMEI or serial to see whether the phone is in stock, what it cost, who bought it and which receipt it was sold on.</p></div></article>
+        <article class="panel device-panel"><div class="panel-head"><div><p class="eyebrow">DEVICE REGISTER</p><h2>Individual phone records</h2><p class="muted small-text">Track each individual phone by IMEI, serial number, storage, colour, condition and battery health.</p></div></div><div class="table-wrap"><table><thead><tr><th>Device / Model</th><th>IMEI</th><th>Storage</th><th>Condition</th><th>Battery</th><th>Cost</th><th>Status</th><th></th></tr></thead><tbody id="deviceTable"></tbody></table></div><div id="deviceEmpty" class="empty-inline">No individually tracked phones yet.</div></article>
+      </section>
+
+      <section id="view-checkout" class="view">
+        <div class="section-intro"><div><p class="muted">Tap a tile to add it, scan a barcode, or build the basket manually.</p></div><div class="button-row"><button id="scanButton" class="btn btn-secondary">▣ Scan barcode</button><button id="holdSaleButton" class="btn btn-secondary">⏸ Hold sale</button></div></div>
+        <article class="panel quick-sell-panel">
+          <div class="panel-head"><div><p class="eyebrow">QUICK SELL</p><h2>Tap to add</h2></div><div class="quick-sell-tools"><div class="seg" role="tablist"><button type="button" class="seg-btn active" data-quick-mode="top">Top sellers</button><button type="button" class="seg-btn" data-quick-mode="all">All items</button></div><input id="quickSearch" class="search-input quick-search" type="search" placeholder="Find an item" autocomplete="off"></div></div>
+          <div id="quickSellGrid" class="quick-sell-grid"><div class="empty-inline">No items available to sell.</div></div>
+          <p class="helper-text">Tap an item to add it. For phones, choose the exact IMEI next. Add product photos from Inventory — they are kept on this phone.</p>
+        </article>
+        <div id="heldSalesBar" class="held-bar hidden"><span class="held-label">Held sales</span><div id="heldSalesList" class="held-list"></div></div>
+        <div class="checkout-layout">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">01 / ADD TO SALE</p><h2>Choose items</h2></div></div>
+            <form id="addCartForm" class="add-cart-form">
+              <div class="field field-wide"><label for="cartProduct">Product</label><select id="cartProduct" required></select></div>
+              <div class="field field-wide hidden" id="devicePickWrap"><label for="cartDevice">Select exact phone / IMEI</label><select id="cartDevice"></select></div>
+              <div class="field"><label for="cartQty">Quantity</label><input id="cartQty" type="number" min="1" step="1" value="1" required></div>
+              <div class="field"><label for="cartPrice">Selling price (K)</label><input id="cartPrice" type="number" min="0" step="0.01" required></div>
+              <button type="submit" class="btn btn-secondary cart-add-btn">Add item +</button>
+            </form>
+            <div class="cart-heading"><h3>Sale items</h3><div class="cart-head-actions"><span id="cartLineCount">0 items</span><button type="button" class="mini-btn" id="clearCartButton">Clear basket</button></div></div><div id="cartItems" class="cart-list"><div class="empty-inline">Your sale basket is empty.</div></div>
+          </article>
+          <article class="panel sale-summary"><div class="panel-head"><div><p class="eyebrow">02 / CUSTOMER & PAYMENT</p><h2>Complete transaction</h2></div></div>
+            <form id="checkoutForm" class="stack-form">
+              <div class="field"><label for="customerName">Customer name</label><input id="customerName" maxlength="100" placeholder="Walk-in customer"></div>
+              <div class="field"><label for="customerPhone">Customer phone</label><input id="customerPhone" type="tel" maxlength="30" placeholder="09X XXX XXXX"></div>
+              <div class="two-fields"><div class="field"><label for="saleDiscount">Discount (K)</label><input id="saleDiscount" type="number" min="0" step="0.01" value="0"></div><div class="field"><label for="salePaid">Amount paid (K)</label><input id="salePaid" type="number" min="0" step="0.01" value="0" required></div></div>
+              <div class="field"><label for="saleMethod">Payment method</label><select id="saleMethod"><option value="cash">Cash</option><option value="airtel_money">Airtel Money</option><option value="mtn_momo">MTN MoMo</option><option value="bank_transfer">Bank transfer</option><option value="card">Card / POS</option><option value="other">Other</option></select></div>
+              <div class="field"><label for="saleReference">Payment reference (optional)</label><input id="saleReference" maxlength="80" placeholder="Mobile money transaction ID"></div>
+              <div class="field"><label for="saleNotes">Notes (optional)</label><textarea id="saleNotes" rows="2" maxlength="240" placeholder="Warranty agreed, delivery note, etc."></textarea></div>
+              <div class="total-box"><div><span>Subtotal</span><strong id="cartSubtotal">K0.00</strong></div><div><span>Discount</span><strong id="cartDiscount">K0.00</strong></div><div class="total-final"><span>Total due</span><strong id="cartTotal">K0.00</strong></div><div><span>Balance after payment</span><strong id="cartBalance">K0.00</strong></div></div>
+              <button type="submit" class="btn btn-primary btn-block" id="completeSaleButton">Complete sale & generate receipt</button><p class="helper-text">The sale and stock deduction are processed together in the database. A balance can be collected later.</p>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-transactions" class="view">
+        <div class="section-intro"><div><p class="muted">Find any sale, reprint a receipt or collect an outstanding balance.</p></div><input id="salesSearch" class="search-input narrow-search" type="search" placeholder="Receipt or customer"></div>
+        <article class="panel debtors-panel"><div class="panel-head"><div><p class="eyebrow">MONEY OWED</p><h2>Debtors</h2></div><strong id="debtorTotal" class="panel-total">K0.00</strong></div><div id="debtorList" class="list-stack"><div class="empty-inline">No outstanding balances.</div></div></article>
+        <article class="panel"><div class="table-wrap"><table><thead><tr><th>Receipt</th><th>Date</th><th>Customer</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th><th>Actions</th></tr></thead><tbody id="salesTable"></tbody></table></div><div id="salesEmpty" class="empty-inline">No sales recorded yet.</div></article>
+      </section>
+
+      <section id="view-expenses" class="view">
+        <div class="section-intro"><div><p class="muted">Record business spending such as transport, delivery, packaging and other operating costs.</p></div></div>
+        <div class="expense-layout"><article class="panel"><div class="panel-head"><div><p class="eyebrow">NEW EXPENSE</p><h2>Record expense</h2></div></div><form id="expenseForm" class="stack-form"><div class="field"><label for="expenseDescription">Description</label><input id="expenseDescription" required maxlength="160" placeholder="Delivery / transport / packaging"></div><div class="two-fields"><div class="field"><label for="expenseCategory">Category</label><select id="expenseCategory"><option>Transport</option><option>Delivery</option><option>Packaging</option><option>Utilities</option><option>Marketing</option><option>Other</option></select></div><div class="field"><label for="expenseAmount">Amount (K)</label><input id="expenseAmount" type="number" min="0.01" step="0.01" required></div></div><div class="two-fields"><div class="field"><label for="expenseDate">Date</label><input id="expenseDate" type="date" required></div><div class="field"><label for="expenseMethod">Paid using</label><select id="expenseMethod"><option value="cash">Cash</option><option value="airtel_money">Airtel Money</option><option value="mtn_momo">MTN MoMo</option><option value="bank_transfer">Bank transfer</option><option value="other">Other</option></select></div></div><button class="btn btn-primary" type="submit">Save expense</button></form></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">EXPENSE HISTORY</p><h2>Recent expenses</h2></div><strong id="expenseTotal" class="panel-total">K0.00</strong></div><div id="expenseList" class="list-stack"><div class="empty-inline">No expenses recorded.</div></div></article></div>
+      </section>
+
+      <section id="view-reports" class="view">
+        <div class="section-intro"><div><p class="muted">A practical overview of trading activity. Figures are based on records entered into the app.</p></div><div class="date-range"><input type="date" id="reportFrom"><span>to</span><input type="date" id="reportTo"></div><button id="exportSalesCsv" class="btn btn-secondary">Export sales CSV</button></div>
+        <div class="metric-grid report-grid"><article class="metric-card"><span>Sales revenue</span><strong id="reportRevenue">K0.00</strong><small>Completed sales in period</small></article><article class="metric-card"><span>Estimated gross profit</span><strong id="reportGross">K0.00</strong><small>Sales less recorded item costs and discounts</small></article><article class="metric-card"><span>Expenses</span><strong id="reportExpenses">K0.00</strong><small>Operating expenses recorded</small></article><article class="metric-card"><span>Outstanding balances</span><strong id="reportBalances">K0.00</strong><small>All unpaid / part-paid sales</small></article></div>
+        <div class="dash-grid">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">MONEY IN</p><h2>Payments by method</h2></div></div><div id="methodBreakdown" class="list-stack"><div class="empty-inline">No payments in the selected period.</div></div></article>
+          <article class="panel closeout-panel"><div class="panel-head"><div><p class="eyebrow">DAILY CLOSE-OUT</p><h2>Cash up</h2></div><button id="printCloseout" class="btn btn-secondary">Print</button></div><div class="closeout-controls"><label for="closeoutDate">Day</label><input type="date" id="closeoutDate"></div><div id="closeoutSummary" class="closeout-summary"></div><div class="two-fields"><div class="field"><label for="closeoutCounted">Cash counted (K)</label><input id="closeoutCounted" type="number" min="0" step="0.01" placeholder="0.00"></div><div class="field"><label for="closeoutNote">Note</label><input id="closeoutNote" maxlength="120" placeholder="e.g. float kept K100"></div></div><p id="closeoutDiff" class="closeout-diff"></p></article>
+        </div>
+        <div class="dash-grid">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">PROFIT</p><h2>Profit by day</h2></div></div><div class="table-wrap"><table class="compact-table"><thead><tr><th>Day</th><th>Sales</th><th>Revenue</th><th>Gross profit</th></tr></thead><tbody id="profitByDayTable"></tbody></table></div><div id="profitByDayEmpty" class="empty-inline">No sales in the selected period.</div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">STOCK HEALTH</p><h2>Slow-moving stock</h2></div><select id="slowDays" class="select-input"><option value="30">Not sold in 30 days</option><option value="60">Not sold in 60 days</option><option value="90">Not sold in 90 days</option></select></div><div id="slowMovingList" class="list-stack"><div class="empty-inline">Nothing is sitting too long.</div></div></article>
+        </div>
+        <article class="panel"><div class="panel-head"><div><p class="eyebrow">PRODUCT PERFORMANCE</p><h2>Sales by product</h2></div></div><div class="table-wrap"><table><thead><tr><th>Product</th><th>Units sold</th><th>Sales value</th><th>Estimated gross profit</th></tr></thead><tbody id="productReportTable"></tbody></table></div><div id="productReportEmpty" class="empty-inline">No sales in the selected period.</div></article>
+        <p class="helper-text report-caveat">These are management estimates, not formal accounting or tax reports. They exclude taxes, owner drawings, stock shrinkage not recorded, and costs that have not been entered.</p>
+      </section>
+
+      <section id="view-team" class="view">
+        <div class="section-intro"><div><p class="muted">Control who can open the shop and what each person can do. Only owners can change this page.</p></div></div>
+        <div class="settings-layout">
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">YOUR TEAM</p><h2>People with access</h2></div><strong id="teamRole" class="panel-total"></strong></div><div id="teamList" class="list-stack"><div class="empty-inline">Loading…</div></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">ADD SOMEONE</p><h2>Give access</h2></div></div>
+            <form id="teamForm" class="stack-form">
+              <div class="field"><label for="teamEmail">Their email</label><input id="teamEmail" type="email" required placeholder="name@gmail.com" autocomplete="off"></div>
+              <div class="two-fields"><div class="field"><label for="teamName">Name</label><input id="teamName" maxlength="60" placeholder="e.g. Mary"></div>
+              <div class="field"><label for="teamRoleSelect">Role</label><select id="teamRoleSelect"><option value="cashier">Cashier</option><option value="manager">Manager</option><option value="owner">Owner</option></select></div></div>
+              <button class="btn btn-primary btn-block" type="submit">Add to team</button>
+            </form>
+            <div class="about-list" style="margin-top:14px"><div class="info-row"><span>Step 2</span><strong>Create their login</strong></div></div>
+            <p class="helper-text">After adding them here, open Supabase → Authentication → Users → Add user → Create new user (tick <b>Auto Confirm User</b>) using the same email and a password. Then they can sign in.</p>
+            <button id="openAuthUsers" class="btn btn-secondary btn-block" type="button">Open Supabase Users ↗</button></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">WHO CAN DO WHAT</p><h2>Roles</h2></div></div>
+            <div class="about-list"><div class="info-row"><span><b>Owner</b></span><small>Everything, including Team</small></div><div class="info-row"><span><b>Manager</b></span><small>Everything except Team</small></div><div class="info-row"><span><b>Cashier</b></span><small>Sell and view stock. No reports, expenses, costs, deleting or voiding</small></div></div></article>
+        </div>
+      </section>
+      <section id="view-settings" class="view">
+        <div class="section-intro"><div><p class="muted">These details appear on every customer receipt.</p></div></div>
+        <div class="settings-layout"><article class="panel"><div class="panel-head"><div><p class="eyebrow">SHOP PROFILE</p><h2>Business details</h2></div></div><form id="businessForm" class="stack-form"><div class="field"><label for="businessName">Business name</label><input id="businessName" required maxlength="100"></div><div class="two-fields"><div class="field"><label for="businessPhone">Phone / WhatsApp</label><input id="businessPhone" type="tel" maxlength="40"></div><div class="field"><label for="businessEmail">Email</label><input id="businessEmail" type="email" maxlength="120"></div></div><div class="field"><label for="businessAddress">Shop location / address</label><input id="businessAddress" maxlength="180" placeholder="Town / market / shop location"></div><div class="field"><label for="receiptFooter">Receipt footer</label><input id="receiptFooter" maxlength="180"></div><div class="field"><label for="warrantyNote">Warranty / returns wording</label><textarea id="warrantyNote" rows="3" maxlength="400"></textarea></div><button type="submit" class="btn btn-primary">Save business details</button></form></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">DATA & SECURITY</p><h2>Workspace information</h2></div></div><div class="info-cards"><div class="info-row"><span>Database</span><strong>Supabase cloud database</strong></div><div class="info-row"><span>Access</span><strong>Owner sign-in + row security</strong></div><div class="info-row"><span>Currency</span><strong>Zambian Kwacha (ZMW)</strong></div><div class="info-row"><span>Mobile install</span><strong>Progressive Web App</strong></div></div><button id="exportDataButton" class="btn btn-secondary btn-block">Export my records (JSON)</button><p class="helper-text">Keep periodic exports in a safe place. The app does not process Airtel Money or MTN MoMo payments; it records payments you receive through those services.</p></article>
+          <article class="panel preferences-panel"><div class="panel-head"><div><p class="eyebrow">APP PREFERENCES</p><h2>Look, lock &amp; print</h2></div></div><div class="setting-row" style="display:block"><div><strong>Theme</strong><small>Choose how the app looks on this device.</small></div><div class="theme-grid" id="themeGrid">
+<button type="button" class="theme-card" data-theme="light"><span class="theme-swatch sw-light">Aa Light</span><strong>Light</strong><small>Clean white and blue</small></button>
+<button type="button" class="theme-card" data-theme="dark"><span class="theme-swatch sw-dark">Aa Dark</span><strong>Dark</strong><small>Easy on the eyes</small></button>
+<button type="button" class="theme-card" data-theme="black"><span class="theme-swatch sw-black">Aa Black</span><strong>Black &amp; Blue</strong><small>Pure black, blue words</small></button>
+<button type="button" class="theme-card" data-theme="royal"><span class="theme-swatch sw-royal">Aa Royal</span><strong>Royal Blue</strong><small>Bold brand blue</small></button></div></div><div class="setting-row"><div><strong>Receipt paper</strong><small>58mm suits thermal printers.</small></div><select id="paperSize" class="select-input"><option value="a4">A4 / PDF</option><option value="58mm">58mm thermal</option></select></div><div class="setting-row"><div><strong>App PIN</strong><small id="pinStatus">No PIN set.</small></div><div class="button-row"><button id="setPinButton" class="mini-btn" type="button">Set PIN</button><button id="removePinButton" class="mini-btn hidden" type="button">Remove</button><button id="lockNowButton" class="mini-btn hidden" type="button">Lock now</button></div></div><p class="helper-text">Product photos are saved to the cloud so every phone and laptop sees them. The PIN discourages someone who picks up the phone; it does not encrypt your records.</p></article>
+                    <article class="panel"><div class="panel-head"><div><p class="eyebrow">OFFLINE MODE</p><h2>Sales waiting to sync</h2></div><strong id="queueCount" class="panel-total">All synced ✓</strong></div><div id="queueList" class="list-stack"><div class="empty-inline">No sales waiting.</div></div><p class="helper-text">No internet? Keep selling. Sales are stored on this phone and sent automatically when you are back online.</p></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">ACTIVITY LOG</p><h2>Who did what</h2></div><button id="refreshAuditButton" class="mini-btn" type="button">Refresh</button></div><div id="auditList" class="list-stack"><div class="empty-inline">Tap Refresh to see recent activity.</div></div></article>
+                    <article class="panel manager-up"><div class="panel-head"><div><p class="eyebrow">SYSTEM CHECK</p><h2>Is everything in line?</h2></div><button id="runHealthButton" class="mini-btn" type="button">Run check</button></div><div id="healthList" class="list-stack"><div class="empty-inline">Tap “Run check” to compare the dashboard, stock, phones and sales.</div></div></article>
+          <article class="panel owner-only"><div class="panel-head"><div><p class="eyebrow">TEAM</p><h2>Team &amp; access</h2></div></div><p class="helper-text">Add cashiers and managers and choose what each person can do.</p><button class="btn btn-secondary btn-block" type="button" data-view="team">Open Team &amp; access</button></article>
+          <article class="panel laptop-only"><div class="panel-head"><div><p class="eyebrow">LAPTOP POWER TOOLS</p><h2>Keyboard &amp; scanner</h2></div></div>
+            <div class="about-list"><div class="info-row"><span>New sale</span><strong>F2 or Alt+N</strong></div><div class="info-row"><span>Switch tabs</span><strong>Alt+1 … Alt+6</strong></div><div class="info-row"><span>Search</span><strong>/</strong></div><div class="info-row"><span>Finish sale</span><strong>Ctrl+Enter</strong></div><div class="info-row"><span>USB barcode scanner</span><strong>Just scan</strong></div></div>
+            <p class="helper-text">Plug in a USB barcode scanner and scan any SKU or IMEI barcode — it is added to the sale automatically from any screen.</p></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">SHOP DEFAULTS</p><h2>Selling &amp; stock</h2></div></div>
+            <div class="setting-row"><div><strong>Default low-stock level</strong><small>Used when you add a new product.</small></div><input id="defaultReorder" class="select-input" type="number" min="0" step="1" style="width:84px"></div>
+            <div class="setting-row"><div><strong>Currency</strong><small>All prices and receipts.</small></div><strong>Zambian Kwacha (K)</strong></div>
+            <div class="setting-row"><div><strong>Archived products</strong><small>Hidden items you can restore or delete.</small></div><button id="showArchivedButton" class="mini-btn" type="button">View</button></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">DATA TOOLS</p><h2>Export &amp; backup</h2></div></div>
+            <div class="tool-grid"><button id="exportProductsCsv" class="btn btn-secondary" type="button">Products (CSV)</button><button id="settingsExportSales" class="btn btn-secondary" type="button">Sales (CSV)</button></div>
+            <p class="helper-text">Open CSV files in Excel or Google Sheets. Use “Export my records” above for a full backup.</p></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">ABOUT</p><h2>TechPoint ZM app</h2></div></div>
+            <div class="about-list"><div class="info-row"><span>Version</span><strong>2.1.0</strong></div><div class="info-row"><span>Support</span><strong>RSM TechCare · +260 776156441</strong></div></div>
+            <button id="refreshAppButton" class="btn btn-secondary btn-block" type="button" style="margin-top:12px">↻ Update app now</button>
+            <p class="helper-text">Tap this after a new version is deployed to load the newest files instantly.</p></article></div>
+      </section>
+
+      <footer class="main-footer">TechPoint ZM <span>·</span> Phones & Accessories <span>·</span> Built & supported by <strong>RSM TechCare</strong></footer>
+    </main>
+  </div>
+
+  <nav id="mobileNav" class="mobile-nav hidden" aria-label="Mobile navigation">
+    <button class="mobile-nav-item active" data-view="dashboard"><span>◫</span><small>Home</small></button>
+    <button class="mobile-nav-item" data-view="inventory"><span>▤</span><small>Stock</small></button>
+    <button class="mobile-nav-item mobile-main-action" data-view="checkout"><span>＋</span><small>Sell</small></button>
+    <button class="mobile-nav-item" data-view="transactions"><span>▧</span><small>Receipts</small></button>
+    <button class="mobile-nav-item" data-view="settings"><span>⚙</span><small>More</small></button>
+  </nav>
+
+  <dialog id="bulkDialog" class="modal">
+    <form id="bulkForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">BULK ADD</p><h2>Paste products from Excel</h2></div><button type="button" class="close-modal" data-close="bulkDialog">×</button></div>
+      <p class="helper-text">Copy rows in Excel or Google Sheets and paste below. Columns in this order: <b>Name · SKU · Category · Type · Cost · Price · Qty · Low-stock level</b>. Type is phone, accessory, clothing, shoes or other. A header row is fine.</p>
+      <div class="field"><textarea id="bulkText" rows="9" placeholder="Nike Air Max 42&#9;SH-AM42&#9;Sneakers&#9;shoes&#9;600&#9;950&#9;4&#9;2"></textarea></div>
+      <p id="bulkPreview" class="helper-text">Nothing pasted yet.</p>
+      <div class="modal-actions"><button type="button" class="btn btn-secondary" data-close="bulkDialog">Cancel</button><button id="bulkImportBtn" type="submit" class="btn btn-primary">Add products</button></div>
+    </form>
+  </dialog>
+  <dialog id="productDialog" class="modal">
+    <form id="productForm" class="modal-form"><input id="editingProductId" type="hidden"><div class="modal-head"><div><p class="eyebrow">INVENTORY ITEM</p><h2 id="productDialogHeading">Add a product</h2></div><button type="button" class="close-modal" data-close="productDialog">×</button></div>
+      <div class="field"><label for="productName">Product name / model</label><input id="productName" required maxlength="120" placeholder="iPhone 13 128GB / Clear pouch"></div><p class="helper-text">You control this catalogue. Add a new product or model at any time; nothing is locked to a preset product list.</p>
+      <div class="two-fields"><div class="field"><label for="productSku">SKU / stock code</label><input id="productSku" maxlength="60" placeholder="Leave blank to generate"></div><div class="field"><label for="productCategory">Category</label><input id="productCategory" list="productCategoryOptions" maxlength="60" placeholder="Type any category" value="Other"><datalist id="productCategoryOptions"><option value="iPhones"><option value="Android Phones"><option value="Pouches & Cases"><option value="Chargers & Cables"><option value="Screen Protectors"><option value="Power Banks"><option value="Audio"><option value="Smart Watches"><option value="Accessories"><option value="Other"></datalist></div></div>
+      <div class="two-fields"><div class="field"><label for="productType">Item type</label><select id="productType"><option value="clothing">Clothing</option><option value="shoes">Shoes</option><option value="phone">Phone (individual device)</option><option value="accessory">Accessory (quantity stock)</option><option value="other">Other (quantity stock)</option></select></div><div class="field"><label for="productReorder">Low stock alert at</label><input id="productReorder" type="number" min="0" step="1" value="2"></div></div>
+      <label class="check-field"><input id="trackImei" type="checkbox"><span><strong>Track each unit by IMEI / serial number</strong><small>Use for individual phones with unique IMEI/serial details. Register every physical unit separately after saving.</small></span></label>
+      <div class="two-fields"><div class="field"><label for="productCost">Buying cost (K)</label><input id="productCost" type="number" min="0" step="0.01" value="0" required></div><div class="field"><label for="productPrice">Selling price (K)</label><input id="productPrice" type="number" min="0" step="0.01" required></div></div>
+      <div class="field" id="openingStockField"><label for="productOpeningStock">Opening quantity</label><input id="productOpeningStock" type="number" min="0" step="1" value="0"></div>
+      <div class="modal-actions"><button type="button" class="btn btn-secondary" data-close="productDialog">Cancel</button><button type="submit" class="btn btn-primary">Save product</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="deviceDialog" class="modal"><form id="deviceForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">INDIVIDUAL DEVICE</p><h2>Register a phone</h2></div><button type="button" class="close-modal" data-close="deviceDialog">×</button></div>
+    <div class="field"><label for="deviceProduct">Phone model</label><select id="deviceProduct" required></select></div><div class="field"><label for="deviceImei">IMEI <span class="required-mark">*</span></label><input id="deviceImei" required minlength="8" maxlength="24" inputmode="numeric" placeholder="Enter device IMEI"></div><div class="two-fields"><div class="field"><label for="deviceSerial">Serial number</label><input id="deviceSerial" maxlength="80"></div><div class="field"><label for="deviceStorage">Storage</label><select id="deviceStorage"><option value="">Select</option><option>64GB</option><option>128GB</option><option>256GB</option><option>512GB</option><option>1TB</option><option>Other</option></select></div></div><div class="two-fields"><div class="field"><label for="deviceColour">Colour</label><input id="deviceColour" maxlength="40" placeholder="Midnight / Blue"></div><div class="field"><label for="deviceBattery">Battery health (%)</label><input id="deviceBattery" type="number" min="1" max="100" placeholder="e.g. 92"></div></div><div class="two-fields"><div class="field"><label for="deviceCondition">Condition</label><select id="deviceCondition"><option>New</option><option>Like New</option><option selected>Used - Good</option><option>Used - Excellent</option><option>Used - Fair</option><option>Refurbished</option></select></div><div class="field"><label for="deviceCost">Buying cost (K)</label><input id="deviceCost" type="number" min="0" step="0.01" required value="0"></div></div><div class="modal-actions"><button type="button" class="btn btn-secondary" data-close="deviceDialog">Cancel</button><button type="submit" class="btn btn-primary">Register phone</button></div>
+  </form></dialog>
+
+  <dialog id="receiptDialog" class="receipt-dialog"><div class="receipt-toolbar"><strong>Customer receipt</strong><div><button id="voidSaleButton" class="btn btn-danger hidden">Void sale</button><button id="shareReceiptButton" class="btn btn-secondary">WhatsApp</button><button id="printReceipt58Button" class="btn btn-secondary">58mm</button><button id="printReceiptButton" class="btn btn-primary">Print / Save PDF</button><button class="close-modal" data-close="receiptDialog">×</button></div></div><div id="receiptContent" class="receipt-paper"></div></dialog>
+
+  <dialog id="paymentDialog" class="modal small-modal"><form id="paymentForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">COLLECT BALANCE</p><h2>Record a payment</h2></div><button type="button" class="close-modal" data-close="paymentDialog">×</button></div><input id="paymentSaleId" type="hidden"><div class="info-row"><span>Remaining balance</span><strong id="paymentBalance">K0.00</strong></div><div class="field"><label for="paymentAmount">Amount received (K)</label><input id="paymentAmount" type="number" min="0.01" step="0.01" required></div><div class="field"><label for="paymentMethod">Payment method</label><select id="paymentMethod"><option value="cash">Cash</option><option value="airtel_money">Airtel Money</option><option value="mtn_momo">MTN MoMo</option><option value="bank_transfer">Bank transfer</option><option value="card">Card / POS</option><option value="other">Other</option></select></div><div class="field"><label for="paymentReference">Reference</label><input id="paymentReference" maxlength="80"></div><div class="modal-actions"><button type="button" class="btn btn-secondary" data-close="paymentDialog">Cancel</button><button type="submit" class="btn btn-primary">Save payment</button></div></form></dialog>
+
+  <dialog id="quickDeviceDialog" class="modal small-modal"><div class="modal-form"><div class="modal-head"><div><p class="eyebrow">CHOOSE PHONE</p><h2 id="quickDeviceTitle">Select the IMEI</h2></div><button type="button" class="close-modal" data-close="quickDeviceDialog">×</button></div><p class="helper-text">Tap the exact handset you are selling. Each IMEI is sold once.</p><div id="quickDeviceList" class="list-stack"></div></div></dialog>
+
+  <dialog id="scanDialog" class="modal small-modal"><div class="modal-form"><div class="modal-head"><div><p class="eyebrow">SCAN TO SELL</p><h2>Scan barcode or QR</h2></div><button type="button" class="close-modal" data-close="scanDialog">×</button></div><div id="scanReader" class="scan-stage"></div><p id="scanStatus" class="helper-text">Starting camera…</p><form id="scanManualForm" class="scan-manual"><div class="field"><label for="scanManual">Barcode, SKU or IMEI</label><input id="scanManual" maxlength="60" autocomplete="off" placeholder="Type the code if the camera cannot read it"></div><button type="submit" class="btn btn-secondary">Add</button></form></div></dialog>
+
+  <dialog id="pinDialog" class="modal small-modal"><form id="pinForm" class="modal-form"><div class="modal-head"><div><p class="eyebrow">APP SECURITY</p><h2>Set a 4-digit PIN</h2></div><button type="button" class="close-modal" data-close="pinDialog">×</button></div><div class="field"><label for="pinNew">New PIN</label><input id="pinNew" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="new-password"></div><div class="field"><label for="pinConfirm">Confirm PIN</label><input id="pinConfirm" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="new-password"></div><p class="helper-text">The PIN is stored on this phone only. It does not encrypt your records.</p><div class="modal-actions"><button type="button" class="btn btn-secondary" data-close="pinDialog">Cancel</button><button type="submit" class="btn btn-primary">Save PIN</button></div></form></dialog>
+
+  <div id="lockScreen" class="lock-screen hidden"><div class="lock-card"><img src="assets/techpoint-mark-white.png" alt="" class="lock-logo"><p class="eyebrow light">TECHPOINT ZM</p><h2>Enter your PIN</h2><input id="lockPin" class="pin-input" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="4-digit PIN"><button id="unlockButton" class="btn btn-primary btn-block" type="button">Unlock</button><p id="lockMessage" class="form-message" role="status"></p><button id="lockSignOut" class="link-btn" type="button">Sign out instead</button></div></div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="config.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
